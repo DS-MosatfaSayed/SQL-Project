@@ -1,0 +1,23 @@
+
+/*Query Four - How Many customers are linked to each customer support employee ?*/
+
+SELECT 
+	sub.Employee_Name,
+	COUNT(sub.customer_name) Number_Of_Customers
+FROM
+(
+	SELECT 
+		e.EmployeeId,
+		(e.FirstName || " " ||e.lastName) Employee_Name,
+		c.FirstName customer_name 
+	FROM Employee e
+	JOIN Customer c
+	ON e.EmployeeId = c.SupportRepId 
+	ORDER BY 1
+) sub
+
+GROUP BY sub.Employee_Name 
+ORDER BY 2;
+
+
+

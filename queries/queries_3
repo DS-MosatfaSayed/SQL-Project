@@ -1,0 +1,18 @@
+/*Query Three - How many avilable songs for each media type*/
+
+SELECT 
+	sub.Media ,
+	COUNT(*) Number_Songs
+FROM
+(
+	SELECT 
+		t.name song ,
+		m.Name Media 
+	FROM Track t
+	JOIN MediaType m
+	ON t.MediaTypeId = m.MediaTypeId
+) sub
+
+GROUP BY 1 
+ORDER BY 2  ;
+

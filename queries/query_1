@@ -1,0 +1,17 @@
+/* Query One - How tracks are distributed among different genres*/
+
+
+SELECT
+
+	g.name type, 
+	COUNT (t.TrackId) number_of_songs 
+	
+FROM Track t 
+JOIN Genre  g
+ON t.GenreId = g.GenreId 
+
+GROUP BY 1 
+ORDER BY 2 ;
+
+
+
